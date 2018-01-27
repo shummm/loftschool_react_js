@@ -45,3 +45,15 @@
   color: #000;
   width: 100%;
 }
+.button {
+  border-radius: 5px;
+  border: 0;
+  outline: none;
+  margin: 5px;
+  color: gray;
+  font-size: 1.5em;
+  transition: color 0.3s ;
+}
+.button:hover {
+  color: white;
+}
