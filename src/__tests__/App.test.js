@@ -94,7 +94,7 @@ describe('Компонент App', () => {
       });
     });
 
-    describe('isFormCommitable', () => {
+    describe('isFormCommitTable', () => {
       const wrapper = shallow(<App />);
       it('Присутствует', () => {
         expect(wrapper.instance().isFormCommitable).toBeDefined();
@@ -107,7 +107,7 @@ describe('Компонент App', () => {
             firstName: 'test',
             email: 'test@'
           });
-          expect(wrapper.instance().isFormCommitable()).toBeTruthy();
+          expect(wrapper.instance().isFormCommitTable()).toBeTruthy();
         });
         it(`Должен возвращать false если state.firstName === '' && state.lastName !== '' && state.email !== '' && state.email.includes('@')`, () => {
           wrapper.setState({
@@ -117,7 +117,7 @@ describe('Компонент App', () => {
             email: 'test@'
           });
 
-          expect(wrapper.instance().isFormCommitable()).toBeFalsy();
+          expect(wrapper.instance().isFormCommitTable()).toBeFalsy();
         });
         it(`Должен возвращать false если state.firstName !== '' && state.lastName === '' && state.email !== '' && state.email.includes('@')`, () => {
           wrapper.setState({
@@ -127,7 +127,7 @@ describe('Компонент App', () => {
             email: 'test@'
           });
 
-          expect(wrapper.instance().isFormCommitable()).toBeFalsy();
+          expect(wrapper.instance().isFormCommitTable()).toBeFalsy();
         });
         it(`Должен возвращать false если state.firstName !== '' && state.lastName !== '' && state.email === '' && state.email.includes('@')`, () => {
           wrapper.setState({
@@ -137,7 +137,7 @@ describe('Компонент App', () => {
             email: ''
           });
 
-          expect(wrapper.instance().isFormCommitable()).toBeFalsy();
+          expect(wrapper.instance().isFormCommitTable()).toBeFalsy();
         });
       });
       describe('Если state.step === 2', () => {
@@ -146,7 +146,7 @@ describe('Компонент App', () => {
             step: 2,
             cardNumber: '1324123412341234'
           });
-          expect(wrapper.instance().isFormCommitable()).toBeTruthy();
+          expect(wrapper.instance().isFormCommitTable()).toBeTruthy();
         });
       });
       describe('Если state.step !== 1 | 2', () => {
@@ -154,7 +154,7 @@ describe('Компонент App', () => {
           wrapper.setState({
             step: 3
           });
-          expect(wrapper.instance().isFormCommitable()).toBeFalsy();
+          expect(wrapper.instance().isFormCommitTable()).toBeFalsy();
         });
       });
     });
