@@ -4,16 +4,22 @@ import './App.css';
 
 export default class App extends React.Component {
     state = {
+        tempNews: {
+            text: '',
+        },
         newsInput: '',
-        news:[]
+        news: []
     };
 
+
+
     handleChange = e => {
-        this.setState({ newsInput: e.target.value });
+        this.setState({ newsInput: e.target.value, tempNews: { text: e.target.value} });
+
     };
 
     handleNewPost = () => {
-        this.setState(() => { return { news: [...this.state.news, this.state.newsInput], newsInput: ''} });
+        this.setState(() => { return { news: [...this.state.news, this.state.tempNews], newsInput: '', tempNews: { text: '' }}});
     };
 
     render () {
@@ -22,16 +28,16 @@ export default class App extends React.Component {
 
         return (
             <div className = 'App'>
-                <input value = {newsInput}
+                <input value = { newsInput }
                 onChange = { this.handleChange }
                 className = 'todo-input'
                 placeholder = 'Какие новости?'/>
                 <button onClick = { this.handleNewPost }
                         className = 'button'>Create news</button>
                     <div className = 'todo-container'>
-                        <NewsPost>
-                            { news }
-                        </NewsPost>
+                        {news.map((post, idx) =>
+                        <NewsPost key = { idx } text = { post.text }/>
+                        )}
                     </div>
             </div>
         );
