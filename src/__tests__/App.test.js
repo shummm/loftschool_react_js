@@ -97,7 +97,7 @@ describe('Компонент App', () => {
     describe('isFormCommitTable', () => {
       const wrapper = shallow(<App />);
       it('Присутствует', () => {
-        expect(wrapper.instance().isFormCommitable).toBeDefined();
+        expect(wrapper.instance().isFormCommitTable).toBeDefined();
       });
       describe('Если state.step === 1', () => {
         it(`Должен возвращать true если state.firstName !== '' && state.lastName !== '' && state.email !== '' && state.email.includes('@')`, () => {
