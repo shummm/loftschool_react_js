@@ -70,7 +70,7 @@ export default class App extends React.Component {
 
         return (
             <div className="container">
-                <div className="tab-panel">
+                <div className="tab-panel" >
                     <Step number = { 1 }
                           onClick = { this.handleTabClick }
                           isSelected = { step !== 1 ? false : true }

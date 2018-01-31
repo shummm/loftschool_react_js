@@ -3,34 +3,14 @@ import './Step.css';
 
 export default class Step extends React.Component {
 
-    state = {
-        AttrClassValue: this.props.isSelected === true ? 'step step-selected' : 'step step-clickable' ,
-    };
-
-
-    handleClick = event => {
+    handleClick = () => {
         const {onClick} = this.props;
         const {number} = this.props;
-        const selected = 'step step-selected';
-        const clickable = 'step step-clickable';
-
-        // onClick(number);
-
 
         if (this.props.isClickable === true) {
+
             onClick(number);
         }
-
-        if (this.props.isSelected === true) {
-            console.log('ok');
-            if (this.props.number === event.target.textContent) {
-                console.log('ok');
-                this.setState({AttrClassValue: selected});
-            }
-        } else if (this.props.isSelected === false) {
-            this.setState({AttrClassValue: clickable});
-        }
-        console.log(this.state);
     };
 
 
@@ -39,8 +19,8 @@ export default class Step extends React.Component {
 
         return (
             <React.Fragment>
-                <div className={ this.state.AttrClassValue }
-                     onClick={ event => this.handleClick(event) }>
+                <div className={ this.props.isSelected === true ? 'step step step-selected' : 'step step step-clickable'}
+                     onClick={ () => this.handleClick() }>
                     <p className="step__number">{ this.props.number }</p>
                     <p className="step__title">{ this.props.children }</p>
                 </div>
