@@ -13,6 +13,7 @@ export default class App extends React.Component {
         lastName: '',
         email: '',
         cardNumber: '',
+        tabs: [1,2,3],
     };
 
     handleClickNextForm = () => {
@@ -70,25 +71,17 @@ export default class App extends React.Component {
 
         return (
             <div className="container">
-                <div className="tab-panel" >
-                    <Step number = { 1 }
-                          onClick = { this.handleTabClick }
-                          isSelected = { step !== 1 ? false : true }
-                          isClickable = { step === 1 ? false : true }>
-                        Personal information
-                    </Step>
-                    <Step number = { 2 }
-                          onClick = { this.handleTabClick }
-                          isSelected = { step !== 2 ? false : true }
-                          isClickable = { step === 2 ? false : true }>
-                        Card information
-                    </Step>
-                    <Step number = { 3 }
-                          onClick = { this.handleTabClick }
-                          isSelected = { step !== 3 ? false : true }
-                          isClickable = { step === 3 ? false : true }>
-                        Finish
-                    </Step>
+                <div className="tab-panel">
+                    {this.state.tabs.map((tab, idx) =>
+                        <Step key = {idx}
+                              number = { tab }
+                              onClick = { this.handleTabClick }
+                              isSelected = { tab === step }
+                              isClickable = { this.isFormCommitTable() ? true : false }>
+                            {tab === 1 ? 'Personal information'
+                                : tab === 2 ? 'Card information' : 'Finish'}
+                        </Step>
+                    )}
                 </div>
                 <div className="form-content">
                     { this.renderForm() }
