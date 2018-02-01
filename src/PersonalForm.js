@@ -4,8 +4,8 @@ import './PersonalForm.css';
 export default class PersonalForm extends React.Component {
     state = {
         firstName: this.props.firstName,
-        lastName: null,
-        email: null,
+        lastName: this.props.lastName,
+        email: this.props.email,
     };
 
     handleChangeForm = (e) => {

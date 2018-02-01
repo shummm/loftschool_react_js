@@ -76,10 +76,11 @@ export default class App extends React.Component {
                         <Step key = {idx}
                               number = { tab }
                               onClick = { this.handleTabClick }
-                              isSelected = { tab === step }
-                              isClickable = { this.isFormCommitTable() ? true : false }>
+                              isSelected = {  step === tab }
+                              isClickable = { step >= tab }>
                             {tab === 1 ? 'Personal information'
-                                : tab === 2 ? 'Card information' : 'Finish'}
+                                : tab === 2 ? 'Card information'
+                                    : 'Finish'}
                         </Step>
                     )}
                 </div>

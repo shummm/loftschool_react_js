@@ -3,7 +3,7 @@ import './CardForm.css';
 
 export default class CardForm extends React.Component {
     state = {
-        inputText: null,
+        inputText: this.props.cardNumber,
     };
 
     handleChangeForm = event => {
