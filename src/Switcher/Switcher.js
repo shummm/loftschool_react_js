@@ -1,31 +1,45 @@
-import React from 'react';
-import  './Switcher.css';
+import React, {Component} from 'react'
+import './Switcher.css'
 
-export default class Switcher extends React.Component {
+export default class Switcher extends Component {
+
     state = {
         selectedChild: 0
     };
 
-    handleChangeChild = () => {
-
+    handleChangeChild = e => {
+        const selectedChild = +e.target.getAttribute('data-id');
+        this.setState({ selectedChild })
     };
 
-    render() {
+    renderNavBar = (children) => (
+        <nav>
+            <ul className="component-list">
+                {children.map((child, i) =>
+                    <li key={i}
+                        className="component-list__name"
+                        data-id={i}
+                        onClick={this.handleChangeChild}>
+                        {child.type.displayName ? child.type.displayName : child.type.name}
+                    </li>
+                )}
+            </ul>
+        </nav>
+    );
 
+    render(){
+        const { selectedChild } = this.state;
+        const { children } = this.props;
+        console.log(children);
         return (
-            <nav>
-                <ul className="component-list">
-                    <li className="component-list__name"
-                        onClick={this.handleChangeChild}
-                        data-id="0">VideoPlayer</li>
-                    <li className="component-list__name"
-                        onClick={this.handleChangeChild}
-                        data-id='1'>Card number formating</li>
-                    <li className="component-list__name"
-                        onClick={this.handleChangeChild}
-                        data-id="2">ModalButton</li>
-                </ul>
-            </nav>
-        );
+            <div className="switcher">
+                {this.renderNavBar(children)}
+                <hr />
+                {React.Children.map(children, (child, i) =>
+                    i === selectedChild &&
+                    <div className="component-wrapper">{child}</div>
+                )}
+            </div>
+        )
     }
 }
