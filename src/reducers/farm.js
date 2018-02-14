@@ -14,7 +14,7 @@ export default (state = initialState, action) => {
 
             return {
                 orders: [
-                    ...orders || [],
+                    ...orders,
                     action.payload
                 ]
             };

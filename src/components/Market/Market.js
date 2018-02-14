@@ -55,7 +55,8 @@ export class Market extends Component {
         return (
             <div className='market'>
                 <h2>Новые заказы в магазине</h2>
-                <button onClick={() => createOrder(getNewOrder())}>Создать заказ</button>
+                <button onClick={() => createOrder(getNewOrder())}
+                        className='new-orders__create-button'>Создать заказ</button>
                 <button onClick={this.handleMoveOrderToFarm}
                         disabled={!market.orders.length}>Отправить заказ на ферму</button>
                 <div className="order-list">
@@ -70,11 +71,10 @@ const mapStateToProps = ({market}) => ({
     market
 });
 
-const mapDispatchToProps = dispatch =>
-({
-    createOrder: (newOrder) => dispatch(createOrder(newOrder)),
-    moveOrderToFarm: (order) => dispatch(moveOrderToFarm(order))
-});
+const mapDispatchToProps = {
+    createOrder,
+    moveOrderToFarm
+};
 
 export default connect(
     mapStateToProps,

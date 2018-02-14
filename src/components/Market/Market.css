@@ -10,7 +10,10 @@
   flex-direction: column;
 }
 
-
 .order-list {
   padding: 20px 0;
+}
+
+.new-orders__create-button {
+
 }

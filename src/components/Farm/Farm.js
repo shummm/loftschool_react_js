@@ -41,9 +41,9 @@ const mapStateToProps = ({ farm }) => ({
     farm
 });
 
-const mapDispatchToProps = dispatch => ({
-    moveOrderToCustomer: id => dispatch(moveOrderToCustomer(id))
-});
+const mapDispatchToProps = {
+    moveOrderToCustomer
+};
 
 export default connect(
     mapStateToProps,
